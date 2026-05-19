@@ -10,13 +10,16 @@ function isAvailable(bookTitle){
     for(book of library){
         if(bookTitle==book.title && book.totalCopies-book.borrowedCopies>0){
             console.log(bookTitle,"is Available")
+            available=true
             return;
         } else if(bookTitle==book.title && book.totalCopies-book.borrowedCopies==0){
             console.log(`All the Copies of ${bookTitle} are borrowed, Please Check Later.`)
+            available=false
             return;
         }
     }
     console.log(`${bookTitle} is not Availabe\nAvailable books are listed below`)
+    available=false;
     let num_idx=1
     for(booklist of library){
         console.log(num_idx,booklist.title,`by ${booklist.author}`)
