@@ -5,24 +5,18 @@ let library = [
     { title: "The Psychology of Money", author: "Morgan Housel", genre: "Finance", totalCopies: 4, borrowedCopies: 4 },
     { title: "Deep Work",         author: "Cal Newport",    genre: "Self Help",  totalCopies: 3, borrowedCopies: 1 }
 ];
+
+
 let available = false
 function isAvailable(bookTitle){
+    console.log("Function Run")
     for(book of library){
-        if(bookTitle==book.title && book.totalCopies-book.borrowedCopies>0){
-            console.log(bookTitle,"is Available")
-            available=true
+         if(bookTitle==book.title){
+            available=book.totalCopies-book.borrowedCopies>0       //Final Working version
             return;
-        } else if(bookTitle==book.title && book.totalCopies-book.borrowedCopies==0){
-            console.log(`All the Copies of ${bookTitle} are borrowed, Please Check Later.`)
-            available=false
-            return;
-        }
-    }
-    console.log(`${bookTitle} is not Availabe\nAvailable books are listed below`)
-    available=false;
-    let num_idx=1
-    for(booklist of library){
-        console.log(num_idx,booklist.title,`by ${booklist.author}`)
-        num_idx++;
-    }
+         } else{
+            available=false;
+         }
+    }    
 }
+
