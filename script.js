@@ -49,3 +49,11 @@ function removeCar(carNumber) {
     }
 }
 
+function searchCar(carNumber) {
+    vehicleLocation = checkVehicle(carNumber);
+    if(vehicleLocation===false){
+        return `car ${carNumber} not found`
+    } else {
+        return vehicleLocation;
+    }
+}
