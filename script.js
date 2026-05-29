@@ -67,3 +67,11 @@ function getStatus(){
         }
     }
 }
+
+function availableSlots(){
+    for(let slot of parkingLot){
+        if(slot.occupied===false){
+            console.log(slot.slot)
+        }
+    }
+}
