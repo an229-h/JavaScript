@@ -34,3 +34,18 @@ function parkCar(carNumber) {
         return `Vehicle ${carNumber} is already parked at ${checkVehicle(carNumber)}`
     }
 }
+
+function removeCar(carNumber) {
+    if(checkVehicle(carNumber)=== false) {
+        return `Car ${carNumber} not found`
+    } else{
+        for(let slot of parkingLot) {
+            if(slot.vehicle===carNumber){
+                slot.vehicle=null;
+                slot.occupied=false;
+                return `Car ${carNumber} has been remove from slot ${slot.slot}`
+            }
+        }
+    }
+}
+
