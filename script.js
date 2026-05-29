@@ -1,22 +1,36 @@
-let library = [
-    { title: "The Alchemist",     author: "Paulo Coelho",   genre: "Fiction",    totalCopies: 3, borrowedCopies: 3 },
-    { title: "Atomic Habits",     author: "James Clear",    genre: "Self Help",  totalCopies: 5, borrowedCopies: 2 },
-    { title: "Clean Code",        author: "Robert Martin",  genre: "Tech",       totalCopies: 2, borrowedCopies: 1 },
-    { title: "The Psychology of Money", author: "Morgan Housel", genre: "Finance", totalCopies: 4, borrowedCopies: 4 },
-    { title: "Deep Work",         author: "Cal Newport",    genre: "Self Help",  totalCopies: 3, borrowedCopies: 1 }
+const TOTAL_SLOTS = 6;
+
+let parkingLot = [
+    { slot: 1, occupied: false, vehicle: null },
+    { slot: 2, occupied: false, vehicle: null },
+    { slot: 3, occupied: true, vehicle: 112 },
+    { slot: 4, occupied: false, vehicle: null },
+    { slot: 5, occupied: false, vehicle: null },
+    { slot: 6, occupied: false, vehicle: null },
 ];
 
 
-let available = false
-function isAvailable(bookTitle){
-    console.log("Function Run")
-    for(book of library){
-         if(bookTitle==book.title){
-            available=book.totalCopies-book.borrowedCopies>0       //Final Working version
-            return;
-         } else{
-            available=false;
-         }
-    }    
+function checkVehicle(carNumber) {
+    for (let slot of parkingLot) {
+        if (slot.vehicle === carNumber) {
+            return slot.slot;
+        }
+    }
+    return false;
 }
 
+function parkCar(carNumber) {
+    if (checkVehicle(carNumber) === false) {
+        //Proceed to park
+        for (let slot of parkingLot) {
+            if (slot.occupied === false) {
+                slot.vehicle = carNumber
+                slot.occupied = true;
+                return `Vehicle ${carNumber} is now parked at ${slot.slot}`
+            }
+        }
+        return "All slots are currently full"
+    } else {
+        return `Vehicle ${carNumber} is already parked at ${checkVehicle(carNumber)}`
+    }
+}

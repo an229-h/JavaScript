@@ -5,12 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <h1>started 15.22 IST</h1>
-    <h2>isAvailable("Atomic Habits")</h2>
-    <h2>
-        isAvailable("The Alchemist")
-    </h2>
+<body bgcolor="black">
+    <p>
+        You are managing a parking lot with a fixed number of slots.
+Each slot can be empty or occupied by a vehicle.
+
+Your tasks:
+
+1. parkVehicle(vehicleNumber)
+   - find the first available slot
+   - park the vehicle there
+   - return "Vehicle {vehicleNumber} parked at slot {slotNumber}"
+   - if lot is full → return "Parking lot is full"
+   - if vehicle is already parked → return "Vehicle already parked at slot {slotNumber}"
+
+2. removeVehicle(vehicleNumber)
+   - find the vehicle and free its slot
+   - return "Vehicle {vehicleNumber} removed from slot {slotNumber}"
+   - if vehicle not found → return "Vehicle not found"
+
+3. searchVehicle(vehicleNumber)
+   - return "Vehicle {vehicleNumber} found at slot {slotNumber}"
+   - if not found → return "Vehicle not found"
+
+4. getStatus()
+   - print all slots
+   - show slot number, status (Occupied/Empty), vehicle number if occupied
+
+5. availableSlots()
+   - return count AND list of available slot numbers
+
+6. relocateVehicle(vehicleNumber, newSlot)
+   - move vehicle to a specific slot
+   - if new slot is occupied → "Slot {newSlot} is already occupied"
+   - if vehicle not found → "Vehicle not found"
+   - if slot doesn't exist → "Invalid slot"
+    </p>
 </body>
 <script src="script.js">
     
