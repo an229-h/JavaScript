@@ -13,7 +13,7 @@ let parkingLot = [
 function checkVehicle(carNumber) {
     for (let slot of parkingLot) {
         if (slot.vehicle === carNumber) {
-            return slot.slot;
+            return slot;
         }
     }
     return false;
@@ -32,7 +32,7 @@ function parkCar(carNumber) {
         }
         return "All slots are currently full"
     } else {
-        return `Vehicle ${carNumber} is already parked at ${exist}`
+        return `Vehicle ${carNumber} is already parked at ${exist.slot}`
     }
 }
 
@@ -55,7 +55,7 @@ function searchCar(carNumber) {
     if(vehicleLocation===false){
         return `car ${carNumber} not found`
     } else {
-        return vehicleLocation;
+        return `The vehicle is at slot ${vehicleLocation.slot}`;
     }
 }
 
@@ -77,30 +77,3 @@ function availableSlots(){
     }
 }
 
-function relocateCar(carNumber, newSlot) {
-    let vehicleLocation = checkVehicle(carNumber)
-    if (vehicleLocation === false) {
-        return `The Car ${carNumber} doesn't exist`
-    } else {
-        for (let slot of parkingLot) {
-            if (slot.vehicle === carNumber) {
-                for (let slot of parkingLot) {
-                    if (slot.slot === newSlot) {
-                        if (slot.occupied === true) {
-                            return `slot ${slot.slot} is occupied`
-                        } else {
-                            slot.occupied = true;
-                            slot.vehicle = carNumber;
-                            return "Relocated successfully"
-                        }
-                    }
-                }
-                slot.occupied = false;
-                slot.vehicle = null;
-
-            }
-        }
-    }
-
-
-}
