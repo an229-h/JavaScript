@@ -57,3 +57,13 @@ function searchCar(carNumber) {
         return vehicleLocation;
     }
 }
+
+function getStatus(){
+    for(let slot of parkingLot){
+        if(slot.occupied===true){
+            console.log(`slot:${slot.slot}\nstatus:occupied\nvehicle:${slot.vehicle}`)
+        } else {
+            console.log(`slot:${slot.slot}\nstatus:empty`)
+        }
+    }
+}
