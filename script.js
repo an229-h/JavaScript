@@ -1,5 +1,3 @@
-const TOTAL_SLOTS = 6;
-
 let parkingLot = [
     { slot: 1, occupied: false, vehicle: null },
     { slot: 2, occupied: false, vehicle: null },
@@ -51,7 +49,7 @@ function removeCar(carNumber) {
 }
 
 function searchCar(carNumber) {
-    vehicleLocation = checkVehicle(carNumber);
+    let vehicleLocation = checkVehicle(carNumber);
     if(vehicleLocation===false){
         return `car ${carNumber} not found`
     } else {

@@ -13,7 +13,7 @@
     body{
         font-family:Arial, sans-serif;
         background:#f4f6f9;
-        max-width:700px;
+        max-width:800px;
         margin:auto;
         padding:15px;
     }
@@ -53,13 +53,19 @@
     .utilities{
         display:flex;
         gap:8px;
-        margin-top:15px;
+        margin-top:10px;
+        margin-bottom:15px;
     }
 
-    .note{
-        margin-top:15px;
-        color:#666;
-        font-size:14px;
+    #output{
+        background:white;
+        border:1px solid #ddd;
+        border-radius:8px;
+        padding:15px;
+        min-height:180px;
+        white-space:pre-wrap;
+        font-family:Consolas, monospace;
+        overflow:auto;
     }
 </style>
 </head>
@@ -67,29 +73,35 @@
 <body>
 
 <h1>Parking Lot Manager</h1>
+<div id="output">
+   <a href="https://github.com/an229-h/JavaScript">Github repo with commits</a>
+   <a href="https://youtube.com/live/YhKsPQVTquo">Youtube Live 29May2026 #1</a>
+   <a href=""
+
+</div>
 
 <form class="row"
-onsubmit="console.log(parkCar(Number(document.getElementById('parkCarNumber').value))); return false;">
+onsubmit="displayOutput(parkCar(Number(document.getElementById('parkCarNumber').value))); return false;">
     <input type="number" id="parkCarNumber" placeholder="Car Number">
     <button type="submit">Park</button>
 </form>
 
 <form class="row"
-onsubmit="console.log(removeCar(Number(document.getElementById('removeCarNumber').value))); return false;">
+onsubmit="displayOutput(removeCar(Number(document.getElementById('removeCarNumber').value))); return false;">
     <input type="number" id="removeCarNumber" placeholder="Car Number">
     <button type="submit">Remove</button>
 </form>
 
 <form class="row"
-onsubmit="console.log(searchCar(Number(document.getElementById('searchCarNumber').value))); return false;">
+onsubmit="displayOutput(searchCar(Number(document.getElementById('searchCarNumber').value))); return false;">
     <input type="number" id="searchCarNumber" placeholder="Car Number">
     <button type="submit">Search</button>
 </form>
 
 <form class="row"
-onsubmit="console.log(relocateCar(
-Number(document.getElementById('relocateCarNumber').value),
-Number(document.getElementById('newSlotNumber').value)
+onsubmit="displayOutput(relocateCar(
+    Number(document.getElementById('relocateCarNumber').value),
+    Number(document.getElementById('newSlotNumber').value)
 )); return false;">
     <input type="number" id="relocateCarNumber" placeholder="Car Number">
     <input type="number" id="newSlotNumber" placeholder="New Slot">
@@ -97,13 +109,19 @@ Number(document.getElementById('newSlotNumber').value)
 </form>
 
 <div class="utilities">
-    <button onclick="getStatus()">Status</button>
-    <button onclick="availableSlots()">Free Slots</button>
+    <button onclick="displayOutput(getStatus()); alert('check console')">Status</button>
+    <button onclick="displayOutput(availableSlots()); alert('check console')">Free Slots</button>
 </div>
 
-<div class="note">
-    Open Developer Tools → Console (F12) to view output.
+<div id="output">
+Welcome to Parking Lot Manager
 </div>
+
+<script>
+function displayOutput(text){
+    document.getElementById("output").textContent = text;
+}
+</script>
 
 <script src="script.js"></script>
 
