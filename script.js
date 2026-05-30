@@ -5,7 +5,7 @@ let parkingLot = [
     { slot: 2, occupied: false, vehicle: null },
     { slot: 3, occupied: true, vehicle: 112 },
     { slot: 4, occupied: false, vehicle: null },
-    { slot: 5, occupied: false, vehicle: null },
+    { slot: 5, occupied: true, vehicle: 108 },
     { slot: 6, occupied: false, vehicle: null },
 ];
 
@@ -77,3 +77,26 @@ function availableSlots(){
     }
 }
 
+function relocateCar(carNumber, newSlot){
+    let exist = checkVehicle(carNumber)
+    if(exist===false){
+        return `${carNumber} doesn't exist in our parking lot`
+    } else {
+        let relocated;
+        for(let slot of parkingLot){
+            if(slot.slot===newSlot && slot.occupied===false){
+                slot.occupied=true;
+                slot.vehicle=carNumber;
+                relocated = true;
+            }
+        }
+        for(let slot of parkingLot){
+            if(slot.slot==exist.slot && relocated===true){
+                slot.occupied=false;
+                slot.vehicle=null; 
+                return  'Car relocated successfully'
+            }
+        }
+        return "Car hasn't been relocated"
+    }
+}

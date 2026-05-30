@@ -1,48 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parking Lot Manager</title>
+
+<style>
+    *{
+        box-sizing:border-box;
+    }
+
+    body{
+        font-family:Arial, sans-serif;
+        background:#f4f6f9;
+        max-width:700px;
+        margin:auto;
+        padding:15px;
+    }
+
+    h1{
+        text-align:center;
+        margin-bottom:20px;
+    }
+
+    .row{
+        display:flex;
+        gap:8px;
+        margin-bottom:10px;
+    }
+
+    input{
+        flex:1;
+        padding:8px;
+        border:1px solid #ccc;
+        border-radius:5px;
+    }
+
+    button{
+        padding:8px 14px;
+        border:none;
+        border-radius:5px;
+        background:#0078ff;
+        color:white;
+        cursor:pointer;
+        white-space:nowrap;
+    }
+
+    button:hover{
+        background:#005fd1;
+    }
+
+    .utilities{
+        display:flex;
+        gap:8px;
+        margin-top:15px;
+    }
+
+    .note{
+        margin-top:15px;
+        color:#666;
+        font-size:14px;
+    }
+</style>
 </head>
-<body bgcolor="black">
-    <p>
-        You are managing a parking lot with a fixed number of slots.
-Each slot can be empty or occupied by a vehicle.
 
-Your tasks:
+<body>
 
-1. parkVehicle(vehicleNumber)
-   - find the first available slot
-   - park the vehicle there
-   - return "Vehicle {vehicleNumber} parked at slot {slotNumber}"
-   - if lot is full → return "Parking lot is full"
-   - if vehicle is already parked → return "Vehicle already parked at slot {slotNumber}"
+<h1>Parking Lot Manager</h1>
 
-2. removeVehicle(vehicleNumber)
-   - find the vehicle and free its slot
-   - return "Vehicle {vehicleNumber} removed from slot {slotNumber}"
-   - if vehicle not found → return "Vehicle not found"
+<form class="row"
+onsubmit="console.log(parkCar(Number(document.getElementById('parkCarNumber').value))); return false;">
+    <input type="number" id="parkCarNumber" placeholder="Car Number">
+    <button type="submit">Park</button>
+</form>
 
-3. searchVehicle(vehicleNumber)
-   - return "Vehicle {vehicleNumber} found at slot {slotNumber}"
-   - if not found → return "Vehicle not found"
+<form class="row"
+onsubmit="console.log(removeCar(Number(document.getElementById('removeCarNumber').value))); return false;">
+    <input type="number" id="removeCarNumber" placeholder="Car Number">
+    <button type="submit">Remove</button>
+</form>
 
-4. getStatus()
-   - print all slots
-   - show slot number, status (Occupied/Empty), vehicle number if occupied
+<form class="row"
+onsubmit="console.log(searchCar(Number(document.getElementById('searchCarNumber').value))); return false;">
+    <input type="number" id="searchCarNumber" placeholder="Car Number">
+    <button type="submit">Search</button>
+</form>
 
-5. availableSlots()
-   - return count AND list of available slot numbers
+<form class="row"
+onsubmit="console.log(relocateCar(
+Number(document.getElementById('relocateCarNumber').value),
+Number(document.getElementById('newSlotNumber').value)
+)); return false;">
+    <input type="number" id="relocateCarNumber" placeholder="Car Number">
+    <input type="number" id="newSlotNumber" placeholder="New Slot">
+    <button type="submit">Move</button>
+</form>
 
-6. relocateVehicle(vehicleNumber, newSlot)
-   - move vehicle to a specific slot
-   - if new slot is occupied → "Slot {newSlot} is already occupied"
-   - if vehicle not found → "Vehicle not found"
-   - if slot doesn't exist → "Invalid slot"
-    </p>
+<div class="utilities">
+    <button onclick="getStatus()">Status</button>
+    <button onclick="availableSlots()">Free Slots</button>
+</div>
+
+<div class="note">
+    Open Developer Tools → Console (F12) to view output.
+</div>
+
+<script src="script.js"></script>
+
 </body>
-<script src="script.js">
-    
-</script>
 </html>
